@@ -1,0 +1,19 @@
+1.
+pupps = session.query(Puppy).order_by(Puppy.name).all()
+for pup in pupps:
+	print pup.name
+
+2.
+newb = session.query(Puppy).filter(Puppy.dateOfBirth > datetime.now()-timedelta(182)).order_by(Puppy.dateOfBirth.desc()).all()
+for ii in newb:
+	print ii.name
+
+3.
+wei = session.query(Puppy).order_by(Puppy.weight).all()
+for iii in wei:
+	print iii.name
+
+4. 
+grp = session.query(Shelter, fund.count(Puppy.id)).join(Puppy).filter(Shelter.id == Puppy.shelter_id).group_by(Shelter.name).all()
+for p in grp:
+	print g[0].name, g[1]
